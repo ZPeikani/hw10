@@ -5,7 +5,7 @@ const close = document.getElementById("close");
 const form = document.querySelector("form");
 const taskId = document.getElementById("id");
 let id = 0;
-let userArr = [];
+const userArr = JSON.parse(localStorage.getItem("userData")) || [];
 
 addInfo.addEventListener("click", () => {
   modalAddInfo.style.display = "block";
@@ -31,20 +31,21 @@ function submitData(event) {
   };
   id++;
   userArr.push(userData);
+  localStorage.setItem("userData", JSON.stringify(userArr));
   renderData(userData);
 }
 
 function renderData(userData) {
   const tableBody = document.querySelector("tbody");
   // tableBody.innerHTML = "";
-  userArr.forEach(() => {
-      const newRow = document.createElement("tr")
-        newRow.innerHTML = `<td class="border p-3">${userData.taskName}<span id="id"> ${id}</span></td>
-        <td class="border text-center">${userData.taskPriority}</td>
-        <td class="border text-center">${userData.taskStatus}</td>
+  const newRow = document.createElement("tr");
+  newRow.classList.add("border");
+  newRow.innerHTML = `<td class="border p-3">${userData.taskName}<span id="id"> ${id}</span></td>
+        <td class="border text-center"><span id="priority-td">${userData.taskPriority}</span></td>
+        <td class="border text-center"><span id="status-td">${userData.taskStatus}</span></td>
         <td class="border text-center">${userData.taskDeadLine}</td>
         <td
-          class="border py-3 flex flex-col sm:flex-row items-center justify-center sm:gap-1"
+          class="flex flex-col sm:flex-row items-center justify-center sm:gap-1"
         >
           <img
             width="38"
@@ -68,7 +69,50 @@ function renderData(userData) {
             id="seen"
           />
         </td>`;
-      tableBody.append(newRow)
-      // console.log(newRow);
-  });
+  tableBody.append(newRow);
+  const priority = document.getElementById("priority-td");
+  if (userData.taskPriority == "Medium") {
+    priority.classList.add("bg-yellow-500", "rounded-lg", "text-white", "p-1");
+  }
+  if (userData.taskPriority == "Low") {
+    priority.classList.add("bg-gray-300", "rounded-lg", "text-white", "p-1");
+  }
+  if (userData.taskPriority == "High") {
+    priority.classList.add("bg-red-600", "rounded-lg", "text-white", "p-1");
+  }
+
+  const status = document.getElementById("status-td");
+  if (userData.taskStatus == "Doing") {
+    status.classList.add("bg-yellow-500", "rounded-lg", "text-white", "p-1");
+  }
+  if (userData.taskStatus == "Done") {
+    status.classList.add("bg-green-700", "rounded-lg", "text-white", "p-1");
+  }
+  if (userData.taskStatus == "Todo") {
+    status.classList.add("bg-red-600", "rounded-lg", "text-white", "p-1");
+  }
+  // console.log(newRow);
 }
+
+// function priorityAdditionalClass(priority) {
+//   if (priority == "Medium") {
+//     medium.classList.add("bg-yellow-500", "rounded-lg", "text-white");
+//   }
+//   if (priority == "low") {
+//     low.classList.add("bg-gray-300", "rounded-lg", "text-white");
+//   }
+//   if (priority == "high") {
+//     high.classList.add("bg-red-600", "rounded-lg", "text-white");
+//   }
+// }
+// function statusAdditionalClass(status) {
+//   if (status == "doing") {
+//     doing.classList.add("bg-yellow-500", "rounded-lg", "text-white");
+//   } else if (status == "done") {
+//     low.classList.add("bg-green-700", "rounded-lg", "text-white");
+//   } else if (status == "todo") {
+//     high.classList.add("bg-red-600", "rounded-lg", "text-white");
+//   } else {
+//     return "";
+//   }
+// }
