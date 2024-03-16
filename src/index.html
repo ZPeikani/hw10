@@ -39,48 +39,17 @@
           <th class="border">Deadline</th>
           <th class="border">Action</th>
         </thead>
-        <tbody>
-          <!-- <td class="border p-3"><span id="id"></span></td>
-          <td class="border text-center"></td>
-          <td class="border text-center"></td>
-          <td class="border text-center"></td>
-          <td
-            class="flex flex-col sm:flex-row items-center justify-center sm:gap-1"
-          >
-            <img
-              width="38"
-              height="38"
-              src="https://img.icons8.com/sf-black-filled/38/dc3545/delete-forever.png"
-              alt="delete-forever"
-              id="delete"
-            />
-            <img
-              width="38"
-              height="38"
-              src="https://img.icons8.com/sf-black-filled/38/0d6efd/create-new.png"
-              alt="create-new"
-              id="edit"
-            />
-            <img
-              width="38"
-              height="38"
-              src="https://img.icons8.com/ios-glyphs/38/6c757d/preview-pane.png"
-              alt="preview-pane"
-              id="seen"
-            />
-          </td> -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
     <div
       id="modalAddInfo"
       class="hidden fixed z-1 left-0 top-0 w-full h-full overflow-auto bg-gray-400 bg-opacity-40"
     >
-      <div
-        class="bg-white p-5 border w-2/3 my-28 mx-auto sm:w-2/6"
-      >
+      <div class="bg-white p-5 border w-2/3 my-28 mx-auto sm:w-2/6">
         <span
-          class="text-black float-right text-3xl font-bold hover:cursor-pointer" id="close"
+          class="text-black float-right text-3xl font-bold hover:cursor-pointer"
+          id="close"
           >&times;</span
         >
         <form action="" class="flex flex-col gap-6">
@@ -98,11 +67,16 @@
             <div class="flex gap-4">
               <div>
                 <label for="low">Low</label>
-                <input type="radio" id="low" name="priority" value="Low"/>
+                <input type="radio" id="low" name="priority" value="Low" />
               </div>
               <div>
                 <label for="medium">Medium</label>
-                <input type="radio" id="medium" name="priority" value="Medium" />
+                <input
+                  type="radio"
+                  id="medium"
+                  name="priority"
+                  value="Medium"
+                />
               </div>
               <div>
                 <label for="high">High</label>
@@ -136,7 +110,12 @@
               class="border border-gray-500 w-2/3"
             />
           </div>
-          <button class="p-1.5 rounded-md w-1/3 bg-blue-500 border-none text-white text-lg hover:bg-blue-700 text-center" id="submit">Submit</button>
+          <button
+            class="p-1.5 rounded-md w-1/3 bg-blue-500 border-none text-white text-lg hover:bg-blue-700 text-center"
+            id="submit"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
