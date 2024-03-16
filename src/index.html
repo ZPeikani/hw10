@@ -7,7 +7,7 @@
     <link href="./output.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="flex flex-col justify-center">
+    <main class="flex flex-col justify-center">
       <header
         class="bg-purple-700 text-white sm:flex sm:justify-between items-center p-3"
       >
@@ -41,84 +41,101 @@
         </thead>
         <tbody></tbody>
       </table>
-    </div>
-    <div
-      id="modalAddInfo"
+      <div
+        id="modalAddInfo"
+        class="hidden fixed z-1 left-0 top-0 w-full h-full overflow-auto bg-gray-400 bg-opacity-40"
+      >
+        <div class="bg-white p-5 border w-2/3 my-28 mx-auto sm:w-2/6">
+          <span
+            class="text-black float-right text-3xl font-bold hover:cursor-pointer"
+            id="close"
+            >&times;</span
+          >
+          <form action="" class="flex flex-col gap-6">
+            <div class="flex flex-col gap-1">
+              <label for="task"> Task Name : </label>
+              <input
+                type="text"
+                id="task"
+                name="task"
+                class="border border-gray-500 w-2/3"
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <p>Priority :</p>
+              <div class="flex gap-4">
+                <div>
+                  <label for="low">Low</label>
+                  <input type="radio" id="low" name="priority" value="Low" />
+                </div>
+                <div>
+                  <label for="medium">Medium</label>
+                  <input
+                    type="radio"
+                    id="medium"
+                    name="priority"
+                    value="Medium"
+                  />
+                </div>
+                <div>
+                  <label for="high">High</label>
+                  <input type="radio" id="high" name="priority" value="High" />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p>Status :</p>
+              <div class="flex gap-4">
+                <div>
+                  <label for="todo">Todo</label>
+                  <input type="radio" id="todo" name="status" value="Todo" />
+                </div>
+                <div>
+                  <label for="doing">Doing</label>
+                  <input type="radio" id="doing" name="status" value="Doing" />
+                </div>
+                <div>
+                  <label for="done">Done</label>
+                  <input type="radio" id="done" name="status" value="Done" />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="deadline">Deadline :</label>
+              <input
+                type="date"
+                id="deadline"
+                name="deadline"
+                class="border border-gray-500 w-2/3"
+              />
+            </div>
+            <button
+              class="p-1.5 rounded-md w-1/3 bg-blue-500 border-none text-white text-lg hover:bg-blue-700 text-center"
+              id="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div id="showInfoModal">
+      </div>
+    </main>
+    <!-- <div
+      id="showInfoModal"
       class="hidden fixed z-1 left-0 top-0 w-full h-full overflow-auto bg-gray-400 bg-opacity-40"
     >
-      <div class="bg-white p-5 border w-2/3 my-28 mx-auto sm:w-2/6">
+      <div
+        class="bg-white p-5 border w-2/3 my-28 mx-auto sm:w-1/2"
+        id="modalSeenInfo"
+      >
         <span
           class="text-black float-right text-3xl font-bold hover:cursor-pointer"
           id="close"
           >&times;</span
         >
-        <form action="" class="flex flex-col gap-6">
-          <div class="flex flex-col gap-1">
-            <label for="task"> Task Name : </label>
-            <input
-              type="text"
-              id="task"
-              name="task"
-              class="border border-gray-500 w-2/3"
-            />
-          </div>
-          <div class="flex flex-col gap-1">
-            <p>Priority :</p>
-            <div class="flex gap-4">
-              <div>
-                <label for="low">Low</label>
-                <input type="radio" id="low" name="priority" value="Low" />
-              </div>
-              <div>
-                <label for="medium">Medium</label>
-                <input
-                  type="radio"
-                  id="medium"
-                  name="priority"
-                  value="Medium"
-                />
-              </div>
-              <div>
-                <label for="high">High</label>
-                <input type="radio" id="high" name="priority" value="High" />
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col gap-1">
-            <p>Status :</p>
-            <div class="flex gap-4">
-              <div>
-                <label for="todo">Todo</label>
-                <input type="radio" id="todo" name="status" value="Todo" />
-              </div>
-              <div>
-                <label for="doing">Doing</label>
-                <input type="radio" id="doing" name="status" value="Doing" />
-              </div>
-              <div>
-                <label for="done">Done</label>
-                <input type="radio" id="done" name="status" value="Done" />
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col gap-1">
-            <label for="deadline">Deadline :</label>
-            <input
-              type="date"
-              id="deadline"
-              name="deadline"
-              class="border border-gray-500 w-2/3"
-            />
-          </div>
-          <button
-            class="p-1.5 rounded-md w-1/3 bg-blue-500 border-none text-white text-lg hover:bg-blue-700 text-center"
-            id="submit"
-          >
-            Submit
-          </button>
-        </form>
       </div>
-    </div>
+    </div> -->
     <script src="./main.js"></script>
   </body>
 </html>
