@@ -8,6 +8,7 @@ const showInfoModal = document.querySelector("showInfoModal");
 const seenModal = document.getElementById("showInfoModal");
 let id = 0;
 const userArr = [];
+const objectKeys = ["task", "priority", "status", "deadline"];
 const storedData = localStorage.getItem("userData");
 if (storedData) {
   userArr.push(...JSON.parse(storedData));
@@ -217,3 +218,33 @@ function statusModalClass(index) {
     );
   }
 }
+
+document.addEventListener("click", function (e) {
+  if (e.target.id === "delete") {
+    const row = e.target.closest("tr");
+    const index = userArr.findIndex((obj) => obj.id === id);
+    userArr.splice(index, 1);
+    row.remove();
+  }
+});
+
+document.addEventListener("click", function (e) {
+  if (e.target.id === "edit") {
+    const cell = e.target
+      .closest("tr")
+      .querySelectorAll('td');
+    const userObject = {};
+    cell.forEach((cell, index) => {
+      userObject[objectKeys[index]] = cell.innerText;
+    });
+    // console.log(userObject);
+    document.querySelector('input[name="task"]').value = userObject.task;
+    document.querySelector('input[name="priority"]').value =
+      userObject.priority;
+    console.log(document.querySelector('input[name="priority"]').value);
+    document.querySelector('input[name="status"]').value = userObject.status;
+    document.querySelector('input[name="deadline"]').value =
+      userObject.deadline;
+  }
+  modalAddInfo.style.display = "block";
+});
